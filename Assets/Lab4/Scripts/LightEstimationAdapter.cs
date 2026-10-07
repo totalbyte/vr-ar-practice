@@ -9,6 +9,58 @@ public class LightEstimationAdapter : MonoBehaviour
     public ARCameraManager arCameraManager;
     public Light mainLight;
     public Text lightInfoText;
+    public Text modeLabel;                          // напис на кнопці перемикання режиму
+    private bool hdrMode = true;                    // true — Environmental HDR, false — Ambient Intensity
+    // початковий стан світла, щоб повертати його при зміні режиму
+    private float defaultIntensity;
+    private Color defaultColor;
+    private Quaternion defaultRotation;
+    private AmbientMode defaultAmbientMode;
+    private SphericalHarmonicsL2 defaultAmbientProbe;
+
+    void Awake()
+    {
+        defaultIntensity = mainLight.intensity;
+        defaultColor = mainLight.color;
+        defaultRotation = mainLight.transform.rotation;
+        defaultAmbientMode = RenderSettings.ambientMode;
+        defaultAmbientProbe = RenderSettings.ambientProbe;
+    }
+
+    void Start()
+    {
+        ApplyMode();
+    }
+
+    // викликається кнопкою "Режим світла" (On Click в інспекторі)
+    public void ToggleLightMode()
+    {
+        hdrMode = !hdrMode;
+        ApplyMode();
+    }
+
+    void ApplyMode()
+    {
+        // повертаємо світло до початкового стану, щоб значення попереднього режиму не залишались
+        mainLight.intensity = defaultIntensity;
+        mainLight.color = defaultColor;
+        mainLight.transform.rotation = defaultRotation;
+        mainLight.useColorTemperature = false;
+        RenderSettings.ambientMode = defaultAmbientMode;
+        RenderSettings.ambientProbe = defaultAmbientProbe;
+
+        // які дані про освітлення просимо в ARCore
+        if (hdrMode)
+            arCameraManager.requestedLightEstimation = LightEstimation.MainLightDirection
+                                                     | LightEstimation.MainLightIntensity
+                                                     | LightEstimation.AmbientSphericalHarmonics;
+        else
+            arCameraManager.requestedLightEstimation = LightEstimation.AmbientIntensity
+                                                     | LightEstimation.AmbientColor;
+
+        if (modeLabel != null)
+            modeLabel.text = hdrMode ? "Світло: HDR" : "Світло: Ambient";
+    }
 
     void OnEnable()
     {
@@ -23,7 +75,7 @@ public class LightEstimationAdapter : MonoBehaviour
 
     void OnCameraFrameReceived(ARCameraFrameEventArgs args)
     {
-        string info = "Оцінка освітлення:\n";
+        string info = "Оцінка освітлення (" + (hdrMode ? "Environmental HDR" : "Ambient Intensity") + "):\n";
 
         // Перевіряємо наявність інформації про освітлення і виводимо її
 
