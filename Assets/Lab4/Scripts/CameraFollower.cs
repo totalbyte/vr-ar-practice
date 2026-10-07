@@ -3,9 +3,9 @@ using UnityEngine;
 /// Об'єкт "слідує" за камерою: залишається в певній позиції відносно неї
 public class CameraFollower : MonoBehaviour
 {
-    public Transform arCamera;                              // Посилання на камеру AR
+    public Transform arCamera;
     public Vector3 offset = new Vector3(0f, -0.1f, 0.4f);   // зміщення: x — вправо, y — вгору, z — вперед (у метрах)
-    public bool isFollowing = false;                        // чи ввімкнено режим слідування
+    public bool isFollowing = false;
 
     private float lastCameraYaw;                            // кут повороту камери навколо осі Y у попередньому кадрі
 

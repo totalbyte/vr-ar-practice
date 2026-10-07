@@ -4,7 +4,7 @@ using UnityEngine.UI;
 /// Кнопка: вмикає / вимикає режим слідування об'єкта за камерою
 public class FollowModeToggle : MonoBehaviour
 {
-    [SerializeField] private ARObjectSpawner spawner;   // звідки беремо розміщений об'єкт
+    [SerializeField] private ARObjectSpawner spawner;
     [SerializeField] private Button toggleButton;
     [SerializeField] private Text buttonLabel;
 
