@@ -30,7 +30,7 @@ public class CameraFollower : MonoBehaviour
 
         if (!isFollowing) return;
 
-        // Позиція: розміщуємо об'єкт відносно камери (формула з методички)
+        // Позиція: розміщуємо об'єкт відносно камери
         transform.position = arCamera.position + arCamera.forward * offset.z
                            + arCamera.right * offset.x
                            + arCamera.up * offset.y;
