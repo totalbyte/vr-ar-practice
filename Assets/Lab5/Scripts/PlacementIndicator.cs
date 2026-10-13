@@ -3,7 +3,6 @@ using UnityEngine;
 using UnityEngine.XR.ARFoundation;
 using UnityEngine.XR.ARSubsystems;
 
-/// Допоміжний елемент: показує на площині точку, куди буде розміщено об'єкт
 public class PlacementIndicator : MonoBehaviour
 {
     [SerializeField] private ARRaycastManager raycastManager;
@@ -20,7 +19,7 @@ public class PlacementIndicator : MonoBehaviour
 
     void Update()
     {
-        // промінь з центру екрана — туди, куди "дивиться" камера
+        // промінь з центру екрана — туди, куди дивиться камера
         Vector2 screenCenter = new Vector2(Screen.width * 0.5f, Screen.height * 0.5f);
 
         IsValid = raycastManager.Raycast(screenCenter, hits, TrackableType.PlaneWithinPolygon);
@@ -29,7 +28,7 @@ public class PlacementIndicator : MonoBehaviour
         {
             Pose pose = hits[0].pose;    // найближча точка перетину з площиною
 
-            // повертаємо індикатор лише навколо вертикалі так, щоб він "дивився" на камеру
+            // повертаємо індикатор лише навколо вертикалі так, щоб він дивився на камеру
             Vector3 toCamera = arCamera.transform.position - pose.position;
             toCamera.y = 0;
             if (toCamera.sqrMagnitude > 0.0001f)
@@ -39,7 +38,7 @@ public class PlacementIndicator : MonoBehaviour
             transform.SetPositionAndRotation(pose.position, pose.rotation);
         }
 
-        // площина є — показуємо диск, немає — ховаємо
+        // площина є — показуємо диск, як немає ховаємо
         if (visual.activeSelf != IsValid)
             visual.SetActive(IsValid);
     }
