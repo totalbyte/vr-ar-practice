@@ -60,7 +60,7 @@ public class ScanPopupController : MonoBehaviour
             case NotTrackingReason.InsufficientLight: return "Занадто темно. Увімкніть світло";
             case NotTrackingReason.ExcessiveMotion: return "Рухайте телефон повільніше";
             case NotTrackingReason.InsufficientFeatures: return "Наведіть камеру на поверхню з текстурою, а не однотонну";
-            default: return "Повільно поводьте телефоном, щоб розпочати відстеження";
+            default: return "Повільно проводьте телефоном над столом або іншою горизонтальною площиною";
         }
     }
 
