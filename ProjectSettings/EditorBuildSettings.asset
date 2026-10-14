@@ -14,9 +14,12 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Lab3/Scenes/lab3_vr-ar.unity
     guid: ea6cff4ed057e8046954c0a736230a4c
-  - enabled: 1
+  - enabled: 0
     path: Assets/Lab4/Scenes/lab4_vr-ar.unity
     guid: 814d753b7c2e89d4b8097be5048eff74
+  - enabled: 1
+    path: Assets/Lab5/Scenes/lab5_vr-ar.unity
+    guid: c678a44ae5843214fac14fe48313cedd
   m_configObjects:
     UnityEditor.XR.ARCore.ARCoreSettings: {fileID: 11400000, guid: ebd963e2e3060e14a992891d1fb6e532, type: 2}
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
