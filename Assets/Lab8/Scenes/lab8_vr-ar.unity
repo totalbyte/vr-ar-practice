@@ -132,7 +132,7 @@ GameObject:
   - component: {fileID: 8230819}
   - component: {fileID: 8230818}
   m_Layer: 0
-  m_Name: Stall_Fruit
+  m_Name: Stall_Produce
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2217,7 +2217,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 721060953323184178, guid: d78c7f2ea80b8d443bab443283254e70, type: 3}
       propertyPath: m_Name
-      value: TP_3_Fruits
+      value: TP_3_Produce
       objectReference: {fileID: 0}
     - target: {fileID: 814970982550268998, guid: d78c7f2ea80b8d443bab443283254e70, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4019,7 +4019,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1016311870}
   m_Layer: 0
-  m_Name: Fruits
+  m_Name: Produce
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
